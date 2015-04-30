@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-'''Slowspacer.py: While tailing logs, add some space and a marker between old and new logs
+'''Slowspacer: While tailing logs, add some space and a marker between old and new logs
 
 Ever try to debug something by watching a log and get confused about which log lines were new
 and which were stale and already there?  Pipe your tail to slowspacer and after receiving no logs
