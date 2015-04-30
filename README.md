@@ -9,3 +9,14 @@ batches of logs.
 TODO: This depends on Python, and it would be nice to rewrite it in C or Rust so it didn't.
 
 Example: tail -f /var/log/yourlog.log | slowspacer
+Output:
+
+    [1430428323] batch 1 log line 1
+    [1430428323] batch 1 log line 2
+    [1430428323] batch 1 log line 3
+    
+    ================================================================================
+    
+    [1430428327] batch 2 log line 1
+    [1430428327] batch 2 log line 2
+    [1430428327] batch 2 log line 3
