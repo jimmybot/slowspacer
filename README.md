@@ -7,6 +7,7 @@ for N seconds (default is 3), it will add space and a marker to create visual se
 batches of logs.
 
 TODO: This depends on Python, and it would be nice to rewrite it in C or Rust so it didn't.
+TODO: This is known to work with Python 2.7 but not with Python 3
 
 Example: tail -f /var/log/yourlog.log | slowspacer
 
