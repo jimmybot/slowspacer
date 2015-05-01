@@ -22,7 +22,7 @@ import time
 
 def _no_block_read(infile):
     try:
-        line = infile.readline()
+        line = infile.readline().rstrip()
 
     # Reading will not block with the nonblocking attribute set
     # If there is nothing to read, instead of blocking, IOError is raised
@@ -45,14 +45,15 @@ def watch(logfile, timeout=3, spacer='='):
         # select says we're ready to read
         if rfiles:
             # normally we should not block here but
-            # we can get one if a partial line was written
-            # in this case, our behavior is to *not* output the partial line
+            # it can happen if a partial line was written
+            # in this case, the partial line will be output
+            # when a full line is ready
             line = _no_block_read(rfiles[0])
             if line and len(line):
                 # we have real content again, reset is_spaced to False
                 is_spaced = False
                 while line and len(line):
-                    print line,
+                    print(line)
                     line = _no_block_read(rfiles[0])
 
         # select timed-out with nothing available to read, let's print a spacer
@@ -61,9 +62,7 @@ def watch(logfile, timeout=3, spacer='='):
             # (no need to print consecutive spacers)
             if not is_spaced:
                 is_spaced = True
-                print
-                print spacer_line
-                print
+                print("\n" + spacer_line + "\n")
 
 if __name__ == '__main__':
     import argparse
